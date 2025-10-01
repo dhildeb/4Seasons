@@ -1,4 +1,6 @@
 import Link from "next/link";
+import './seasons/autumn/autumn.scss';
+import './seasons/spring/spring.scss';
 
 export default function Home() {
 
@@ -6,10 +8,10 @@ export default function Home() {
     <div className="">
       <main className="">
         
-        <div className="">
-            <Link href="/seasons/spring">Spring</Link>
+        <div className="flex-col">
+            <Link className="spring-link" href="/seasons/spring">Spring</Link>
             <Link href="/seasons/summer">Summer</Link>
-            <Link href="/seasons/autumn">Autumn</Link>
+            <Link className="autumn-link" href="/seasons/autumn">Autumn</Link>
             <Link href="/seasons/winter">Winter</Link>
         </div>
       </main>

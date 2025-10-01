@@ -1,0 +1,79 @@
+.spring-bg {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #a2d5f2 0%, #e0f7fa 100%);
+    overflow: hidden;
+}
+
+.grass-bg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20vh;
+    background: url('/images/grass.png') repeat-x bottom/contain;
+}
+
+.spring-link {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0277bd;
+    transition: color 0.5s;
+    text-shadow: 0 2px 8px #e0f7fa;
+    &:hover {
+        color: #81d4fa;
+    }
+}
+
+.butterfly {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: url('/images/butterfly.gif') no-repeat center/contain;
+  opacity: 0.9;
+  animation: flutter 20s ease-in-out infinite;
+}
+
+$butterfly-count: 8;
+@for $i from 0 to $butterfly-count {
+  $y1: random(30) + 10;
+  $y2: random(30) + 10;
+  $y3: random(30) + 10;
+  $y4: random(30) + 10;
+  .butterfly-#{$i} {
+    right: -10vw;
+    top: 50vh;
+    animation-delay: #{random(5000) / 1000}s;
+    --y1: #{$y1}vh;
+    --y2: #{$y2}vh;
+    --y3: #{$y3}vh;
+    --y4: #{$y4}vh;
+  }
+}
+
+@keyframes flutter {
+  0% {
+    transform: translateY(0) rotate(-15deg);
+    right: -10vw;
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(var(--y1)) rotate(15deg);
+    right: 25vw;
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(var(--y2)) rotate(-15deg);
+    right: 50vw;
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(var(--y3)) rotate(15deg);
+    right: 75vw;
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(var(--y4)) rotate(-15deg);
+    right: 100vw;
+    opacity: 0.7;
+  }
+}
