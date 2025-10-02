@@ -1,0 +1,142 @@
+.summer-bg {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #a0d8f7 0%, #f7e9c4 100%);
+  overflow: hidden;
+  animation: bgDayCycle 1000s ease-in-out infinite;
+}
+
+@keyframes bgDayCycle {
+  0% {
+    background: linear-gradient(180deg, #a0d8f7 0%, #fff700 100%); // day
+  }
+  25% {
+    background: linear-gradient(180deg, #f7a07a 0%, #a07af7 100%); // sunset
+  }
+  30% {
+    background: linear-gradient(180deg, #3a2c5a 0%, #f7bfa0 100%); // twilight
+  }
+  60% {
+    background: linear-gradient(180deg, #0a1a3c 0%, #222 100%); // midnight
+  }
+  75% {
+    background: linear-gradient(180deg, #3a2c5a 0%, #f7bfa0 100%); // twilight
+  }
+  85% {
+    background: linear-gradient(180deg, #f7c4a0 0%, #f7e9c4 100%); // sunrise
+  }
+  100% {
+    background: linear-gradient(180deg, #a0d8f7 0%, #fff700 100%); // day
+  }
+}
+
+.summer-link {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e90ff;
+  transition: color 0.5s;
+  text-shadow: 0 2px 8px #e6f0fa;
+  &:hover {
+    color: #f7e9c4;
+  }
+}
+
+.sun {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #fff700, #ffcc00);
+  border-radius: 50%;
+  box-shadow: 0 0 30px #ffcc00;
+  animation: sunSetnRise 1000s linear infinite;
+}
+
+@keyframes sunSetnRise {
+  0% {
+    transform: translateY(0vh);
+  }
+  50% {
+    transform: translateY(180vh);
+  }
+  100% {
+    transform: translateY(0vh);
+  }
+}
+
+.moon {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80px;
+  height: 80px;
+  background: #f0f0f0;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #c0c0c0;
+  overflow: hidden;
+  animation: moonRisenSet 1000s linear infinite;
+}
+
+.moon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  background: #454545;
+  border-radius: 50%;
+  animation: moonPhase 8200s steps(1, end) infinite;
+}
+
+@keyframes moonPhase {
+  0% {
+    right: 0;
+    width: 0;
+  }
+  12% {
+    right: 20px;
+    width: 20px;
+  }
+  24% {
+    right: 40px;
+    width: 40px;
+  }
+  36% {
+    right: 60px;
+    width: 60px;
+  }
+  48% {
+    left: 0;
+    width: 80px;
+  }
+  60% {
+    left: 20px;
+    width: 80px;
+  }
+  72% {
+    left: 40px;
+    width: 80px;
+  }
+  84% {
+    left: 60px;
+    width: 80px;
+  }
+  96% {
+    left: 0;
+    width: 0;
+  }
+}
+
+@keyframes moonRisenSet {
+  0% {
+    transform: translateY(180vh);
+  }
+  50% {
+    transform: translateY(0vh);
+  }
+  100% {
+    transform: translateY(180vh);
+  }
+}

@@ -2,11 +2,13 @@ import Link from 'next/link';
 import './autumn.scss';
 
 export default function Autumn() {
+    const leafIndex = Math.floor(Math.random() * 50);
+
     return (
         <div className="autumn-bg">
             <Link className="autumn-link pl-8" href="/">Seasons</Link>
             <div className="leaves">
-                {[...Array(10)].map((_, i) => (
+                {[...Array(leafIndex)].map((_, i) => (
                     <div key={i} className={`leaf leaf-${i}`}></div>
                 ))}
             </div>
