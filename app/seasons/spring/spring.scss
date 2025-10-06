@@ -1,3 +1,15 @@
+.dirt-plot
+{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background: #b97a57;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px #a67c52;
+    cursor: pointer;
+    overflow: hidden;
+}
+
 .spring-bg {
     position: relative;
     min-height: 100vh;

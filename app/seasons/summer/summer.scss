@@ -4,7 +4,37 @@
   background: linear-gradient(180deg, #a0d8f7 0%, #f7e9c4 100%);
   overflow: hidden;
   animation: bgDayCycle 1000s ease-in-out infinite;
+  z-index: -2;
 }
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 1s;
+  animation: starsAppear 1000s linear infinite;
+}
+
+@keyframes starsAppear {
+  0%, 25% { opacity: 0; }
+  30%, 60% { opacity: 1; }
+  90%, 100% { opacity: 0; }
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
 
 @keyframes bgDayCycle {
   0% {
