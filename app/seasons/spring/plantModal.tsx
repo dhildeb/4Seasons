@@ -26,6 +26,7 @@ const PlantModal = ({isOpen, onClose, selectedPlot, setPlots}: PlantModalProps) 
                         const newPlots = [...prev];
                         newPlots[selectedPlot.row][selectedPlot.col].canPlant = false;
                         newPlots[selectedPlot.row][selectedPlot.col].icon = seed.icon;
+                        newPlots[selectedPlot.row][selectedPlot.col].requiredRays = seed.raysNeeded
                         return newPlots;
                     });
                     }

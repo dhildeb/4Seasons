@@ -8,6 +8,32 @@
   z-index: -2;
 }
 
+.plant {
+  cursor: pointer;
+    position: relative;
+    transform: scale(3);
+}
+
+.plant-ready {
+  background: radial-gradient(circle, #ffffff, #ffcc0000);
+  border-radius: 50%;
+  box-shadow: 0 0 5px #ffffff;
+}
+
+.garden {
+    position: absolute;
+    bottom: 8vh;
+    width: 100%;
+}
+
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+    background: url('/images/dirt.png') repeat-x bottom/contain;
+}
+
 .stars {
   position: absolute;
   top: 0;
@@ -191,6 +217,10 @@
 @keyframes sunRaysDecent {
   0% {
     transform: translateY(-10vh);
+  }
+  75% {
+    transform: translateY(85vh);
+    opacity: 0;
   }
   100% {
     transform: translateY(150vh);

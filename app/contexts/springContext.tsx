@@ -3,25 +3,25 @@
 import React, { createContext, useContext, useState } from "react";
 
 const SEEDS = [
-  {id: 1, time: 5, icon: '🌱', resource: {name: 'food', qty: 1}, qty: 5}, 
-  {id: 2, time: 10, icon: '🌿', resource: {name: 'wood', qty: 1}, qty: 1},
-  {id: 3, time: 15, icon: '🍀', resource: {name: 'luck', qty: 1}, qty: 0},
-  {id: 4, time: 20, icon: '🌸', resource: {name: 'beauty', qty: 1}, qty: 0},
-  {id: 5, time: 25, icon: '🌻', resource: {name: 'sunshine', qty: 1}, qty: 0},
-  {id: 6, time: 30, icon: '🌼', resource: {name: 'happiness', qty: 1}, qty: 0},
-  {id: 7, time: 35, icon: '🌷', resource: {name: 'love', qty: 1}, qty: 0},
-  {id: 8, time: 40, icon: '🌹', resource: {name: 'passion', qty: 1}, qty: 0},
+  {id: 1, raysNeeded: 5, icon: '🌱', resource: {name: 'food', qty: 1}, qty: 5}, 
+  {id: 2, raysNeeded: 10, icon: '🌿', resource: {name: 'wood', qty: 1}, qty: 1},
+  {id: 3, raysNeeded: 15, icon: '🍀', resource: {name: 'luck', qty: 1}, qty: 0},
+  {id: 4, raysNeeded: 20, icon: '🌸', resource: {name: 'beauty', qty: 1}, qty: 0},
+  {id: 5, raysNeeded: 25, icon: '🌻', resource: {name: 'sunshine', qty: 1}, qty: 0},
+  {id: 6, raysNeeded: 30, icon: '🌼', resource: {name: 'happiness', qty: 1}, qty: 0},
+  {id: 7, raysNeeded: 35, icon: '🌷', resource: {name: 'love', qty: 1}, qty: 0},
+  {id: 8, raysNeeded: 40, icon: '🌹', resource: {name: 'passion', qty: 1}, qty: 0},
 ]
 
 export const REWARDS = [
-  {id: 1, time: 5, icon: '🌱', resource: {name: 'food', qty: 1}, qty: 1}, 
-  {id: 2, time: 10, icon: '🌿', resource: {name: 'wood', qty: 1}, qty: 1},
-  {id: 3, time: 15, icon: '🍀', resource: {name: 'luck', qty: 1}, qty: 1},
-  {id: 4, time: 20, icon: '🌸', resource: {name: 'beauty', qty: 1}, qty: 1},
-  {id: 5, time: 25, icon: '🌻', resource: {name: 'sunshine', qty: 1}, qty: 1},
-  {id: 6, time: 30, icon: '🌼', resource: {name: 'happiness', qty: 1}, qty: 1},
-  {id: 7, time: 35, icon: '🌷', resource: {name: 'love', qty: 1}, qty: 1},
-  {id: 8, time: 40, icon: '🌹', resource: {name: 'passion', qty: 1}, qty: 1}
+  {id: 1, raysNeeded: 5, icon: '🌱', resource: {name: 'food', qty: 1}, qty: 1}, 
+  {id: 2, raysNeeded: 10, icon: '🌿', resource: {name: 'wood', qty: 1}, qty: 1},
+  {id: 3, raysNeeded: 15, icon: '🍀', resource: {name: 'luck', qty: 1}, qty: 1},
+  {id: 4, raysNeeded: 20, icon: '🌸', resource: {name: 'beauty', qty: 1}, qty: 1},
+  {id: 5, raysNeeded: 25, icon: '🌻', resource: {name: 'sunshine', qty: 1}, qty: 1},
+  {id: 6, raysNeeded: 30, icon: '🌼', resource: {name: 'happiness', qty: 1}, qty: 1},
+  {id: 7, raysNeeded: 35, icon: '🌷', resource: {name: 'love', qty: 1}, qty: 1},
+  {id: 8, raysNeeded: 40, icon: '🌹', resource: {name: 'passion', qty: 1}, qty: 1}
 ]
 
 type Resource = {
@@ -31,7 +31,7 @@ type Resource = {
 
 export type Seed = {
   id: number;
-  time: number; 
+  raysNeeded: number; 
   icon: string; 
   resource: Resource; 
   qty: number;
@@ -44,6 +44,8 @@ export type PlotState = {
   canPlant: boolean;
   hardness: number;
   rewardClaimed: boolean;
+  rays: number;
+  requiredRays: number;
 };
 
 interface SpringContextType {
@@ -71,6 +73,8 @@ export const SpringProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         canPlant: false,
         hardness: Math.floor(Math.random() * 3) + 5,
         rewardClaimed: false,
+        rays: 0,
+        requiredRays: 0
       })
     ))
   );
