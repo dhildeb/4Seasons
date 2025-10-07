@@ -1,8 +1,11 @@
+'use client';
+
 import Link from 'next/link';
 import './autumn.scss';
+import { useState } from 'react';
 
 export default function Autumn() {
-    const leafIndex = Math.floor(Math.random() * 50);
+    const [leafIndex] = useState(Math.floor(Math.random() * 50));
 
     return (
         <div className="autumn-bg">

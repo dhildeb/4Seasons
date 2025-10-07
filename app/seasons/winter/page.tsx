@@ -1,8 +1,11 @@
+'use client';
+
 import Link from "next/link";
 import './winter.scss';
+import { useState } from "react";
 
 export default function Winter() {
-    const blizzardIndex = Math.floor(Math.random() * 300);
+    const [blizzardIndex] = useState(Math.floor(Math.random() * 300));
     return (
         <div className="winter-bg">
             <Link className="winter-link pl-8" href="/">Seasons</Link>

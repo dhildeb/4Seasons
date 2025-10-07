@@ -1,5 +1,6 @@
 .summer-bg {
-  position: relative;
+  position: absolute;
+  min-width: 100vw;
   min-height: 100vh;
   background: linear-gradient(180deg, #a0d8f7 0%, #f7e9c4 100%);
   overflow: hidden;
@@ -13,7 +14,6 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
   z-index: -1;
   opacity: 0;
   transition: opacity 1s;
@@ -63,11 +63,13 @@
 .summer-link {
   font-size: 2rem;
   font-weight: bold;
-  color: #1e90ff;
+  // color: #fffb00;
+  color: #11ae00;
+  text-shadow: 0 0 3px #000000;
   transition: color 0.5s;
-  text-shadow: 0 2px 8px #e6f0fa;
   &:hover {
-    color: #f7e9c4;
+    // color: #ff2200;
+    color: #fffb00;
   }
 }
 
@@ -168,5 +170,29 @@
   }
   100% {
     transform: translateY(180vh);
+  }
+}
+
+.sun-rays {
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 10%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 255, 0, 0.2), 70%, transparent);
+  border-radius: 50%;
+  animation: sunRaysDecent 10s forwards;
+  z-index: 1;
+}
+
+@keyframes sunRaysDecent {
+  0% {
+    transform: translateY(-10vh);
+  }
+  100% {
+    transform: translateY(150vh);
   }
 }

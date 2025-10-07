@@ -1,35 +1,10 @@
-
 'use client';
 
 import { useState, useRef } from "react";
 import PlantModal from "./plantModal";
-import { REWARDS, useSpringContext } from "../seasonsContext";
-
-export type PlotState = {
-  digging: boolean;
-  progress: number;
-  icon: string|null;
-  canPlant: boolean;
-  hardness: number;
-  rewardClaimed: boolean;
-};
-
-const PLOT_COUNT = 2;
-const SHOVEL_SPEED = 5; 
+import { REWARDS, useSpringContext } from "../../contexts/springContext";
 
 export default function DiggingGame() {
-  const [plots, setPlots] = useState<PlotState[][]>(
-    Array(PLOT_COUNT).fill(null).map(() =>
-      Array(PLOT_COUNT).fill(null).map(() => ({
-        digging: false,
-        progress: 0,
-        icon: null,
-        canPlant: false,
-        hardness: Math.floor(Math.random() * 3) + 5,
-        rewardClaimed: false,
-      }))
-    )
-  );
   const [isPlantModalOpen, setIsPlantModalOpen] = useState(false);
   const [selectedPlot, setSelectedPlot] = useState<{row: number, col: number} | null>(null);
 
@@ -43,7 +18,7 @@ export default function DiggingGame() {
     setSelectedPlot(null);
   };
   const diggingIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const {seeds, setSeeds} = useSpringContext();
+  const {seeds, setSeeds, plots, setPlots, plotCount, shovelSpeed} = useSpringContext();
 
   const handleReward = () => {
     const rewardChance = Math.random();
@@ -76,7 +51,7 @@ export default function DiggingGame() {
       let prizeClaimed = false
       setPlots(prev => {
         const newPlots = [...prev];
-        newPlots[row][col].progress = SHOVEL_SPEED + prev[row][col].progress;
+        newPlots[row][col].progress = shovelSpeed + prev[row][col].progress;
         if (newPlots[row][col].progress >= 100) {
           newPlots[row][col].digging = false;
           newPlots[row][col].canPlant = true;
@@ -96,7 +71,7 @@ export default function DiggingGame() {
   }
 
   return (
-    <div className="digging-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${PLOT_COUNT}, 120px)`, gridGap: '24px', justifyContent: 'center', alignItems: 'center', margin: '60px auto' }}>
+    <div className="digging-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${plotCount}, 120px)`, gridGap: '24px', justifyContent: 'center', alignItems: 'center', margin: '60px auto' }}>
       {/* Planting modal */}
       <PlantModal isOpen={isPlantModalOpen} onClose={closePlantModal} selectedPlot={selectedPlot} setPlots={setPlots} />
       {/* Garden  */}

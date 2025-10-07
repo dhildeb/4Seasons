@@ -7,9 +7,8 @@ import './seasons/summer/summer.scss';
 export default function Home() {
 
   return (
-    <div className="">
-      <main className="">
-        
+    <div>
+      <main> 
         <div className="flex-col">
             <Link className="spring-link" href="/seasons/spring">Spring</Link>
             <Link className="summer-link" href="/seasons/summer">Summer</Link>
@@ -17,9 +16,6 @@ export default function Home() {
             <Link className="winter-link" href="/seasons/winter">Winter</Link>
         </div>
       </main>
-      <footer className="">
-
-      </footer>
     </div>
   );
 }

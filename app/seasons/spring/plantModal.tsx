@@ -1,7 +1,6 @@
 'use client';
 
-import { useSpringContext } from "../seasonsContext";
-import { PlotState } from "./diggingGame";
+import { PlotState, useSpringContext } from "../../contexts/springContext";
 
 type PlantModalProps = {
     isOpen: boolean;
