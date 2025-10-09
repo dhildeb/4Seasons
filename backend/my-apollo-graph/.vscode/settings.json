@@ -1,0 +1,13 @@
+{
+    "terminal.integrated.profiles.osx": {
+      "graphos": {
+        "path": "zsh",
+        "args": ["-l"],
+        "env": {
+          "APOLLO_KEY": "service:seasons-h4us5yg:RLRJ3EIXvrtRbTqpWZqkqQ",
+          "APOLLO_GRAPH_REF": "seasons-h4us5yg@current",
+        }
+      }
+    },
+    "terminal.integrated.defaultProfile.osx": "graphos"
+  }
